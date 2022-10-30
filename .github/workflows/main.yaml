@@ -1,0 +1,23 @@
+name: My GO Fortune Workflow
+
+#trigger 
+on: 
+  push
+# Jobs in the workflow
+jobs:
+  # job name
+  my-first-attempt-to-test-if-YAML-works:
+    # OS that this workflow will be running on
+    runs-on: ubuntu-latest
+
+  # list of steps to perform task
+    steps:   
+    - name: Checkout the current repo
+      run: echo " The current time and date in Github is $(date)"
+      #uses: actions/checkout@v3
+      #with:
+      #  ref: " ${{ github.ref }} "
+    #- name: List my current directory after checkout
+    #  run: ls -l
+
+
