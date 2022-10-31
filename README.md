@@ -17,4 +17,4 @@ The public key to verify the image is in the repository `cosign.pub`. To verify 
 cosign verify --key cosign.pub ghcr.io/chukmunnlee/go-fortune:<tag>
 ```
 
-Second time testing this .... I modified this file to test if my slack webhook works!
+Third time testing this .... I modified this file to test if my slack webhook works!
