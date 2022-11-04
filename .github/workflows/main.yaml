@@ -30,7 +30,7 @@ jobs:
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - name: Create a release based on push
-      uses: rymndhng/release-on-push-action@master
+      uses: rymndhng/release-on-push-action@'v[0-9]+.[0-9]+'
       with:
         bump_version_scheme: minor
     - name: Send test data to Slack workflow
