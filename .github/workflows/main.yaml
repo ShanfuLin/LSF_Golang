@@ -33,7 +33,6 @@ jobs:
       with:
         commit: ${{ github.ref }}
         tag: ${{ github.ref }}
-        artifacts: "release.tar.gz,foo/*.txt"
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
       id: slack
