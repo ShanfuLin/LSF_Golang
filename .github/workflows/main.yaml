@@ -2,7 +2,9 @@ name: My GO Fortune Workflow
 
 #trigger 
 on: 
-  push
+  push:
+    branches:
+      - 'v[0-9]??.[0-9]??'
 # Jobs in the workflow
 jobs:
   # job name
@@ -16,10 +18,11 @@ jobs:
       run: echo " The current time and date in Github is $(date)"
     - name: Checkout the current repo
       uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Install Node so that Railway can run
+      uses: actions/setup-node@v3
       with:
         node-version: 16
-    - name: Install Railway
+    - name: Install Railway on Github Terminal
       run: npm i -g @railway/cli
     - name: Deploy
       run: railway up
