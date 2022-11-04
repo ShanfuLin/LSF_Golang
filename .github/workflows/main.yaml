@@ -44,6 +44,14 @@ jobs:
           {
             "blocks": [
               {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "DipSA55 CI/CD Assignment Submission",
+                  "emoji": true
+                }
+              },
+              {
                 "type": "section",
                 "fields": [
                   {
@@ -61,11 +69,21 @@ jobs:
                   {
                     "type": "mrkdwn",
                     "text": "*Repository:*\nhttps://github.com/ShanfuLin/LSF_Golang"
-                  },
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
                   {
                     "type": "mrkdwn",
                     "text": "*Deployment:*\nhttps://linshanfugolangassignment-production.up.railway.app/"
-                  },
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "fields": [
                   {
                     "type": "mrkdwn",
                     "text": "*<https://linshanfugolangassignment-production.up.railway.app/| Open Application>*"
