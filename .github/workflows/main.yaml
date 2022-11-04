@@ -29,7 +29,7 @@ jobs:
       run: railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-    - uses: ncipollo/release-action@v1.0.0
+    - uses: ncipollo/release-action@v1.11.1
       with:
         tag: ${{ github.ref_name }}
         commit: ${{ github.ref_name }}
