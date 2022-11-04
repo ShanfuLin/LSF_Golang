@@ -64,7 +64,11 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Deployment:*\nhttps://linshanfugolangassignment-production.up.railway.app/."
+                    "text": "*Deployment:*\nhttps://linshanfugolangassignment-production.up.railway.app/"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*<https://linshanfugolangassignment-production.up.railway.app/| Open Application>*"
                   }
                 ]
               }
