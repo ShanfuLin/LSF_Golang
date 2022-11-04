@@ -41,14 +41,31 @@ jobs:
         # For posting a rich message using Block Kit
         payload: |
           {
-            "text": "This is just a test",
             "blocks": [
               {
                 "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Testing 123"
-                }
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Name:*\nLin Shanfu\n"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Matriculation:*\nA0043752J"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Email:*\ne1048846@u.nus.edu"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Repository:*\nhttps://github.com/ShanfuLin/LSF_Golang"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Deployment:*\nhttps://linshanfugolangassignment-production.up.railway.app/."
+                  }
+                ]
               }
             ]
           }
