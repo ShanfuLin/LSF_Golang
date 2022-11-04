@@ -31,8 +31,8 @@ jobs:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - uses: ncipollo/release-action@v1
       with:
-        tag: ${{ github.ref }}
         commit: ${{ github.ref }}
+        tag: ${{ github.ref }}
         artifacts: "release.tar.gz,foo/*.txt"
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
