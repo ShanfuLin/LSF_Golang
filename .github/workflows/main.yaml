@@ -3,6 +3,8 @@ name: My GO Fortune Workflow
 #trigger 
 on: 
   push:
+    tags:
+    - '*'
     branches:
       - 'v[0-9]+.[0-9]+'
 # Jobs in the workflow
@@ -31,8 +33,9 @@ jobs:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - uses: ncipollo/release-action@v1
       with:
-        commit: ${{ github.ref }}
         tag: ${{ github.ref }}
+        commit: ${{ github.ref }}
+        artifacts: "release.tar.gz,foo/*.txt"
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
       id: slack
