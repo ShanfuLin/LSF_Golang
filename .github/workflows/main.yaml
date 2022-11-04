@@ -9,6 +9,7 @@ on:
 jobs:
   # job name
   my-first-attempt-to-test-if-YAML-works:
+    if: startsWith(github.event.head_commit.message, '#NORUN')
     # OS that this workflow will be running on
     runs-on: ubuntu-latest
     env:
