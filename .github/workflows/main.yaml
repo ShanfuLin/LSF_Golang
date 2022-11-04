@@ -86,7 +86,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*<https://linshanfugolangassignment-production.up.railway.app/| Open Application>*"
+                    "text": "<https://linshanfugolangassignment-production.up.railway.app/| Open Application>"
                   }
                 ]
               }
