@@ -37,7 +37,7 @@ jobs:
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
       id: slack
-      uses: slackapi/slack-github-action@v1.23.0
+      uses: slackapi/slack-github-action@master
       with:
         # For posting a rich message using Block Kit
         payload: |
