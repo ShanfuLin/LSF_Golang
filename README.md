@@ -16,3 +16,4 @@ The public key to verify the image is in the repository `cosign.pub`. To verify 
 ```
 cosign verify --key cosign.pub ghcr.io/chukmunnlee/go-fortune:<tag>
 ```
+Submitted on 4/11/2022 @ 11.10pm
