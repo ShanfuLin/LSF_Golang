@@ -14,6 +14,21 @@ jobs:
     steps:   
     - name: Checkout the current repo
       run: echo " The current time and date in Github is $(date)"
+    - name: Checkout the current repo
+      uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install packages
+      run: yarn install --frozen-lockfile
+    - name: Run tests
+      run: yarn test
+    - name: Install Railway
+      run: npm i -g @railway/cli
+    - name: Deploy
+      run: railway up
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - name: Send test data to Slack workflow
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
@@ -21,13 +36,13 @@ jobs:
         # For posting a rich message using Block Kit
         payload: |
           {
-            "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+            "text": "This is just a test",
             "blocks": [
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  "text": "Testing 123"
                 }
               }
             ]
