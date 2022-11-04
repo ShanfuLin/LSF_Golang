@@ -29,12 +29,11 @@ jobs:
       run: railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-    - uses: actions/checkout@v2    
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "release.tar.gz,foo/*.txt"
         tag: ${{ github.ref }}
         commit: ${{ github.ref }}
+        artifacts: "release.tar.gz,foo/*.txt"
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
       id: slack
