@@ -32,7 +32,6 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "release.tar.gz,foo/*.txt"
-        bodyFile: "body.md"
         tag: ${{ github.ref }}
         commit: ${{ github.ref }}
         token: ${{ secrets.GH_TOKEN }}
