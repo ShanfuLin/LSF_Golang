@@ -17,26 +17,32 @@ jobs:
   # list of steps to perform task
     steps:   
     - name: Checkout the current repo
+      id: step1 
       run: echo " ${{github.event.head_commit.message}} "
     - name: Checkout the current repo
+      id: step2
       uses: actions/checkout@v3
     - name: Install Node so that Railway can run
+      id: step3
       uses: actions/setup-node@v3
       with:
         node-version: 16
     - name: Install Railway on Github Terminal
+      id: step4
       run: npm i -g @railway/cli
     - name: Deploy
-      run: railway up
+      id: step5 
+      run: railwayup_outcome=$(railway up) >> $GITHUB_OUTPUT
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - uses: ncipollo/release-action@v1
+      id: step6
       with:
         tag: ${{ github.ref_name }}
         commit: ${{ github.ref_name }}
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
-      id: slack
+      id: step7
       uses: slackapi/slack-github-action@v1.23.0
       with:
         # For posting a rich message using Block Kit
@@ -68,7 +74,7 @@ jobs:
                   },
                   {
                     "type": "mrkdwn",
-                    "text": "*Repository:*\nhttps://github.com/ShanfuLin/LSF_Golang"
+                    "text": "*Repository:*\n${{github.repositoryUrl}}"
                   }
                 ]
               },
@@ -77,7 +83,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Deployment:*\nhttps://linshanfugolangassignment-production.up.railway.app/"
+                    "text": "*Deployment:*\n ${{steps.step5.outputs.railwayup_outcome}}"
                   }
                 ]
               },
