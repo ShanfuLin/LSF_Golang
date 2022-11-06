@@ -83,7 +83,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Deployment:*\n ${{steps.step5.outputs.railwayup_outcome.value}}"
+                    "text": "*Deployment:*\n ${{steps.step5.outputs.railwayup_outcome}}"
                   }
                 ]
               },
