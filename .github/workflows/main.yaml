@@ -32,13 +32,9 @@ jobs:
       run: npm i -g @railway/cli
     - name: Deploy
       id: step5 
-      run: echo railwayup_outcome=$(railway up) >> $GITHUB_OUTPUT
+      run: echo railwayup_outcome=$(railway up) | awk '{ sub(/.*Deployment live at/); print }' >> $GITHUB_OUTPUT
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-    - name: Get substring
-      id: step6 
-      run: echo modrailwayup_outcome = echo ${{steps.step5.outputs.railwayup_outcome}} | awk '{ sub(/.*Deployment live at/, ""); print }' >> $GITHUB_OUTPUT
-
     - uses: ncipollo/release-action@v1
       id: step7
       with:
@@ -87,7 +83,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Deployment:*\n ${{steps.step6.outputs.mod_railwayup_outcome}}"
+                    "text": "*Deployment:*\n ${{steps.step5.outputs.railwayup_outcome}}"
                   }
                 ]
               },
