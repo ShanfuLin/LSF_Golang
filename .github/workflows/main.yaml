@@ -37,7 +37,7 @@ jobs:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - name: Get substring
       id: step6 
-      run: echo "mod_railwayup_outcome= $(echo ${{steps.step5.outputs.railwayup_outcome}} | awk -F 'Deployment live at')" >> $GITHUB_OUTPUT
+      run: echo mod_railwayup_outcome= echo ${{steps.step5.outputs.railwayup_outcome}} | awk -F 'Deployment live at' >> $GITHUB_OUTPUT
 
     - uses: ncipollo/release-action@v1
       id: step7
