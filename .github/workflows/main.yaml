@@ -12,6 +12,9 @@ jobs:
     if: ${{ !startsWith(github.event.head_commit.message, '#NORUN') }}
     # OS that this workflow will be running on
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.railwayup_outcome }}
+      output2: 
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
   # list of steps to perform task
@@ -35,14 +38,17 @@ jobs:
       run: echo railwayup_outcome=$(railway up) >> $GITHUB_OUTPUT
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - name: Get substring
+      id: step6 
+      run: echo mod_railwayup_outcome=${{steps.step5.outputs.railwayup_outcome}} | awk '{ sub(/.*Deployment live at:/, ""); sub(/".*/, ""); print }' >> $GITHUB_OUTPUT
     - uses: ncipollo/release-action@v1
-      id: step6
+      id: step7
       with:
         tag: ${{ github.ref_name }}
         commit: ${{ github.ref_name }}
         token: ${{ secrets.GH_TOKEN }}
     - name: Send test data to Slack workflow
-      id: step7
+      id: step8
       uses: slackapi/slack-github-action@v1.23.0
       with:
         # For posting a rich message using Block Kit
@@ -83,7 +89,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Deployment:*\n ${{toJSON(steps.step5.outputs.railwayup_outcome)}}"
+                    "text": "*Deployment:*\n ${{toJSON(steps.step6.outputs.railwayup_outcome)}}"
                   }
                 ]
               },
