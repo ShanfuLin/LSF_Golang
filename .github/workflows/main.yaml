@@ -32,7 +32,7 @@ jobs:
       run: npm i -g @railway/cli
     - name: Deploy
       id: step5 
-      run: echo railwayup_outcome=$(railway up) | awk '{ sub(/.*Deployment live at /, ""); echo }' >> $GITHUB_OUTPUT
+      run: $(echo railwayup_outcome=$(railway up) | awk '{ sub(/.*Deployment live at /, ""); print }') >> $GITHUB_OUTPUT
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - uses: ncipollo/release-action@v1
