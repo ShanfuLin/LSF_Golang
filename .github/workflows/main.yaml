@@ -12,9 +12,6 @@ jobs:
     if: ${{ !startsWith(github.event.head_commit.message, '#NORUN') }}
     # OS that this workflow will be running on
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.step1.outputs.railwayup_outcome }}
-      output2: 
     env:
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 
   # list of steps to perform task
@@ -40,7 +37,7 @@ jobs:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     - name: Get substring
       id: step6 
-      run: echo mod_railwayup_outcome=${{steps.step5.outputs.railwayup_outcome}} | awk '{ sub(/.*Deployment live at:/, ""); sub(/".*/, ""); print }' >> $GITHUB_OUTPUT
+      run: echo mod_railwayup_outcome=${{steps.step5.outputs.railwayup_outcome}} | awk '{ sub(/.*Deployment live at:/, ""); print }' >> $GITHUB_OUTPUT
     - uses: ncipollo/release-action@v1
       id: step7
       with:
